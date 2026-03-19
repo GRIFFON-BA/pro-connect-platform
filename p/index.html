@@ -1,0 +1,17 @@
+window.onload = async () => {
+  const urlParams = new URLSearchParams(window.location.search);
+  const userId = urlParams.get('id');
+  
+  const response = await fetch('../data/users.json');
+  const users = await response.json();
+  const user = users.find(u => u.id === userId);
+  
+  if (user) {
+    document.getElementById('userName').innerText = user.name;
+    document.getElementById('userLevel').innerText = user.level;
+    document.getElementById('userPoints').innerText = user.total_points;
+    // Update progress bar breedte
+    const progress = (user.total_points / 5000) * 100;
+    document.getElementById('progressBar').style.width = progress + '%';
+  }
+};
