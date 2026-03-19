@@ -1,0 +1,47 @@
+name: Process Loyalty Points
+on:
+  repository_dispatch:
+    types: [approve_project]
+
+jobs:
+  reward:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v3
+
+      - name: Update Points and Levels
+        uses: actions/github-script@v6
+        with:
+          script: |
+            const fs = require('fs');
+            const { userId, points, projectId } = context.payload.client_payload;
+            
+            // 1. Update Users
+            let users = JSON.parse(fs.readFileSync('./data/users.json'));
+            let user = users.find(u => u.id === userId);
+            
+            if (user) {
+              user.total_points += parseInt(points);
+              user.projects_count += 1;
+              
+              // Level Up Logica
+              if (user.total_points >= 1000) user.level = "Elite Expert";
+              if (user.total_points >= 5000) user.level = "Master Legend";
+            }
+            
+            // 2. Update Project Status
+            let projects = JSON.parse(fs.readFileSync('./data/projects.json'));
+            let project = projects.find(p => p.id === projectId);
+            if (project) project.status = "approved";
+
+            fs.writeFileSync('./data/users.json', JSON.stringify(users, null, 2));
+            fs.writeFileSync('./data/projects.json', JSON.stringify(projects, null, 2));
+
+      - name: Commit Changes
+        run: |
+          git config user.name "PRO-Connect Bot"
+          git config user.email "bot@pro-connect.app"
+          git add .
+          git commit -m "Points awarded to ${{ github.event.client_payload.userId }}"
+          git push
