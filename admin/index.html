@@ -1,0 +1,24 @@
+<script>
+async function approve(userId, projectId, points) {
+  const GITHUB_TOKEN = 'JOUW_PERSONAL_ACCESS_TOKEN'; // Gebruik een beperkte scope token
+  
+  const response = await fetch('https://api.github.com/repos/GEBRUIKER/REPO/dispatches', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${GITHUB_TOKEN}`,
+      'Accept': 'application/vnd.github.v3+json'
+    },
+    body: JSON.stringify({
+      event_type: 'approve_project',
+      client_payload: { userId, projectId, points }
+    })
+  });
+
+  if(response.ok) alert('Project goedgekeurd!');
+}
+</script>
+
+<div class="card">
+  <img src="../uploads/project123.jpg" />
+  <button onclick="approve('u1', 'p123', 150)">Swipe Rechts (Approve)</button>
+</div>
