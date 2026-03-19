@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8" />
+  <title>Projectfoto uploaden</title>
+</head>
+<body>
+  <h1>Upload projectfoto</h1>
+
+  <form id="upload-form">
+    <label for="image">Kies een foto:</label>
+    <input type="file" id="image" accept="image/*" required />
+    <button type="submit">Upload</button>
+  </form>
+
+  <p id="status"></p>
+  <p id="url-output"></p>
+
+  <script src="upload.js"></script>
+</body>
+</html>
