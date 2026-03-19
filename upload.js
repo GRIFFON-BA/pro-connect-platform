@@ -1,5 +1,5 @@
-const CLOUD_NAME = 'JOUW_CLOUD_NAME_HIER';
-const UPLOAD_PRESET = 'JOUW_UNSIGNED_PRESET_HIER';
+const CLOUD_NAME = 'dtz853u6l';
+const UPLOAD_PRESET = 'ml_default';
 
 const form = document.getElementById('upload-form');
 const statusEl = document.getElementById('status');
