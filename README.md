@@ -1,1 +1,1 @@
-# pro-connect-platform
+# PRO-CONNECT-PLATFORM powered by GRIFFON
