@@ -1,0 +1,11 @@
+[
+  {
+    "id": "u1",
+    "nfc_id": "NFC001",
+    "name": "Henk de Installateur",
+    "level": "Skilled Pro",
+    "total_points": 450,
+    "projects_count": 3,
+    "badges": ["early_bird"]
+  }
+]
