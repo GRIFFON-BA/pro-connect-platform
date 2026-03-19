@@ -1,0 +1,14 @@
+[
+  {
+    "id": 1,
+    "title": "Badkamer renovatie",
+    "description": "Complete renovatie met nieuwe tegels en inloopdouche.",
+    "imageUrl": "https://res.cloudinary.com/jouw_cloud_name/image/upload/v1234567890/projects/voorbeeld.jpg"
+  },
+  {
+    "id": 2,
+    "title": "Keuken upgrade",
+    "description": "Nieuwe frontjes en werkblad.",
+    "imageUrl": "https://res.cloudinary.com/jouw_cloud_name/image/upload/v1234567890/projects/voorbeeld2.jpg"
+  }
+]
